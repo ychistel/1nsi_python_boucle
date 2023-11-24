@@ -1,0 +1,409 @@
+\documentclass[8pt]{beamer}
+
+\usepackage[utf8]{inputenc}
+\RequirePackage[francais]{babel}
+%\usepackage{url}
+%\usepackage{etex}
+%\usepackage{enumitem}
+%\usepackage{multicol}
+\usepackage{xcolor}
+%\usepackage{bbm}
+%\usepackage{amsmath,amsthm,amssymb}
+%\usepackage[official]{eurosym}
+%\usepackage{pifont}
+%\usepackage{exercise}
+%\usepackage{graphics}
+%\usepackage{array,multirow,makecell}
+\usepackage{verbatim}
+%\usepackage[dvipsnames]{pstricks}
+\usepackage{pstricks-add,pst-plot,pst-text,pst-tree,pst-eps,pst-fill,pst-node,pst-math,pst-blur,pst-func}
+%\usepackage{pgf,tikz}
+%\usepackage{tipfr}
+%\usepackage{thmbox}
+%\usepackage{calc}
+%\usepackage{ifthen}
+%\usepackage{pdfpages}
+%\usepackage{colortbl}
+%\usepackage{sagetex}
+%\usetikzlibrary{arrows,patterns}
+%\input tabvar
+%\usepackage{tkz-tab}
+%\usepackage{listings}
+%\usepackage[np]{numprint}
+%\usepackage{fancybox,fancyhdr}
+%\usepackage{thmtools}
+%\usepackage{bclogo}
+%\usepackage{lastpage}
+
+\usepackage{tabularx}
+\usepackage{array,multirow,makecell}
+\usetheme{Madrid}
+%\usetheme{Bergen}
+\usecolortheme{beaver}
+ 
+%Information to be included in the title page:
+\title{Python}
+\subtitle{Structure de données de base}
+\author{Yannick CHISTEL}
+\institute{Lycée Dumont d'Urville - CAEN}
+\date{\today}
+ 
+%----------------------------------------------------------------------------------------------- 
+% 							Commandes Tableaux
+%-----------------------------------------------------------------------------------------------
+\setcellgapes{1pt}
+\makegapedcells
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+
+\newcounter{num}
+\setcounter{num}{0}
+ 
+\begin{document}
+ 
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Les boucles}
+
+\begin{block}{Les boucles}
+Une instruction qui doit être répétée 100 fois n'est pas écrite 100 fois dans un programme. Pour cela, on utilise une boucle.\medskip
+
+La structure de boucle est appelée une structure \textbf{itérative}. La boucle est utilisée pour répéter autant de fois que nécessaire une ou plusieurs instructions. Il en existe deux en python :
+\begin{itemize}
+\item La boucle \textbf{FOR} qui répète \textbf{un nombre fini et connu de fois} les instructions contenues dans la boucle. C'est une \textbf{boucle bornée}.
+\item La boucle \textbf{WHILE} répète les instructions contenues dans la boucle \textbf{tant que la condition donnée est vraie}.
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Remarques}
+\begin{enumerate}
+\item Les instructions dans une \textbf{boucle} constituent un mini programme qui sera exécuté autant de fois que la boucle le demande.
+\item Une \textbf{boucle} peut contenir d'autres \textbf{boucles}. On parle alors de boucles imbriquées.
+\end{enumerate}
+\end{alertblock}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Présentation générale}
+La boucle \textbf{for} prélève dans l'ordre les valeurs présentes dans un ensemble.
+La structure est la suivante :
+\begin{itemize}
+\item \textbf{for} clef \textbf{in} valeurs \textbf{:}\\
+\hspace{0.5cm} instruction(s)
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Exemple}
+Supposons l'ensemble constitué des valeurs "mot", 13, "deux", 6, 125 et "quatre" :
+\begin{itemize}
+\item \textbf{for} c \textbf{in} ["mot",13,"deux",6,125,"quatre"]:\\
+\hspace{0.5cm}print(c,end=" ")
+\end{itemize}
+On obtient l'affichage : "mot" 13 "deux" 6 125 "quatre"
+\end{exampleblock}
+
+\begin{alertblock}{Remarque}
+\begin{enumerate}
+\item La clef peut être une lettre, un mot ou même le caractère souligné \_.
+\item Si l'ensemble des valeurs est composé de nombres, alors il est possible d'effectuer des calculs avec la clef.
+\item Une chaine de caractères constitue un ensemble de valeurs. La clef prend alors pour valeur chacune des lettres, y compris les espaces et les symboles de ponctuation (voir en exercice).
+\end{enumerate}
+
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Ensemble de nombres : RANGE}
+La fonction \textbf{range(paramètres)} permet à une boucle d'itérer sur une suite de nombres.
+
+La fonction \textbf{range} construit un ensemble de nombres suivant les paramètres passés en arguments.
+\begin{itemize}
+\item \textbf{range(n)} renvoie les nombres entiers positifs de $0$ jusqu'à $n-1$
+\item \textbf{range(p,n)} renvoie les nombres entiers positifs de $p$ jusqu'à $n-1$
+\item \textbf{range(p,n,k)} renvoie les nombres entiers positifs de $p$, $p+k$, $p+2k$, ... jusqu'à $n-1$ 
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Exemple}
+\begin{itemize}
+\item range(5) crée l'ensemble de nombres $0, 1, 2, 3, 4$
+\item range(2,5) crée l'ensemble de nombres $2, 3, 4$
+\item range(1,5,2) crée l'ensemble de nombres $1, 3$
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Avec un indice de boucle}
+On introduit une variable de boucle accessible à l'intérieur de la boucle et dont la valeur indique le numéro du tour de boucle. 
+
+Cette variable est appelée \textbf{indice de boucle} ou \textbf{compteur de boucle}.
+
+La structure est la suivante :
+\begin{itemize}
+\item \textbf{for "indice de boucle" in range}$(\text{nombre de répétitions})$ \textbf{:}\\
+\hspace{0.5cm} instructions\\
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Exemple}
+\begin{itemize}
+\item for $i$ in range(4):\\
+\hspace{0.5cm}print($i$,end="$<$")
+\end{itemize}
+On obtient alors l'affichage : $0<1<2<3<$
+\end{exampleblock}
+
+\begin{alertblock}{Remarque}
+Pour $N$ répétitions d'une boucle \textbf{FOR}, l'indice commence à $0$ et se termine au nombre de répétitions - 1, soit $N-1$. On a bien $N$ répétitions au total.
+\end{alertblock}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Indice de début différent de $0$}
+L'indice de boucle démarre à 0. Il est possible de modifier ce comportement en ajoutant le paramètre de début de boucle.
+
+La structure est la suivante :
+\begin{itemize}
+\item \textbf{for "indice de boucle" in range}$(\text{indice de début},\text{nombre de répétitions})$ \textbf{:}\\
+\hspace{0.5cm} instructions\\
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Exemple}
+\begin{itemize}
+\item for $i$ in range(2,5):\\
+\hspace{0.5cm}print($i$,end="$<$")
+\end{itemize}
+On obtient alors l'affichage : $2<3<4<$
+\end{exampleblock}
+
+\begin{alertblock}{Remarque}
+Si aucun indice de début n'est indiqué, l'indice de boucle démarre à 0 par défaut.
+\end{alertblock}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Incrément de boucle différent de $1$}
+L'indice de boucle augmente de $1$ à chaque tour. On dit que l'indice ou compteur de boucle est \textbf{incrémenté} de $1$. On peut modifier \textbf{l'incrément} d'une boucle en ajoutant le paramètre d'incrémentation après le nombre de répétitions.
+
+La structure est la suivante :
+\begin{itemize}
+\item \textbf{for "indice de boucle" in range}$(\text{indice de début},\text{nombre de répétitions},\text{incrément})$ \textbf{:}\\
+\hspace{0.5cm} instructions\\
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Exemple}
+\begin{itemize}
+\item for $i$ in range(0,5,2):\\
+\hspace{0.5cm}print($i$,end="$<$")
+\end{itemize}
+On obtient alors l'affichage : $0<2<4<$
+\end{exampleblock}
+
+\begin{alertblock}{Remarque}
+Si aucun incrément de boucle n'est indiqué, l'incrément vaut $1$ par défaut.\\
+Il faut donné l'indice de début même s'il vaut $0$.
+\end{alertblock}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Répétition d'une instruction avec "variable"}
+Il est possible d'utiliser une variable pour indiquer le nombre de répétitions à condition qu'une valeur lui soit allouée avant l'exécution de la boucle.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+Demander le nombre \textbf{n} de répétitions avant la boucle.
+\begin{itemize}
+\item n=int(input("Nombre de répétitions:"))\\
+for \_ in range(n):\\
+\hspace{0.5cm}print("A")
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Répéter un bloc d'instructions}
+Il est possible de répéter plusieurs instructions à la suite et dans le même ordre. La structure est la suivante :
+\begin{itemize}
+\item \textbf{for} $\_$ \textbf{in range}$(\text{nombre de répétitions})$ \textbf{:}\\
+\hspace{0.5cm} instruction 1\\
+\hspace{0.5cm} instruction 2\\
+\hspace{0.5cm} instruction 3 \\ ...
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{Exemple}
+\begin{itemize}
+\item $x=1$\\
+for \_ in range(4):\\
+\hspace{0.5cm}$x=2*x$\\
+%\hspace{0.5cm}$y=y+1$\\
+\hspace{0.5cm}print($x$,end=" ")
+\end{itemize}
+On obtient alors l'affichage : $2$ $4$ $8$ $16$
+\end{exampleblock}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Avec un accumulateur}
+Il est possible d'utiliser des variables dans une boucle qui ont une valeur qui change à chaque tour de boucle. Ces variables sont appelées des \textbf{accumulateurs de boucles}.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+Calculer la somme de 10 premiers nombres entiers :\medskip
+
+\begin{minipage}{0.35\textwidth}
+\begin{itemize}
+\item S=0\\
+for $i$ in range(10):\\
+%\hspace{0.5cm}a=int(input("a="))\\
+\hspace{0.5cm}S=S+i\\
+print("S=",S)
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+La variable $S$ est \textbf{initialisée} à $0$ avant la boucle.\medskip
+
+\begin{tabular}{*{7}{|C{0.6cm}}|}\hline
+$i$ & $0$ & $1$ & $2$ & $\ldots$ & $8$ & $9$\\\hline
+$S$ & $0$ & $1$ & $3$ & $\ldots$ & $36$ & $45$\\\hline
+\end{tabular}
+\end{minipage}
+
+\medskip
+On obtient l'affichage : $S=45$\\
+La variable \textbf{S} est un accumulateur de boucle.
+\end{exampleblock}
+
+\begin{alertblock}{Remarque}
+Une variable accumulateur de boucle doit être initialisée avant la boucle.
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{La boucle FOR}
+
+\begin{block}{Les boucles imbriquées}
+Une boucle peut contenir une autre bloucle. Ce sont des boucles imbriquées.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+Afficher un même caratère sous la forme d'un carré de côté 5 !\medskip
+
+\begin{minipage}{0.45\textwidth}
+\begin{itemize}
+\item S=0\\
+for $\_$ in range(5):\\
+\hspace{0.5cm}for $\_$ in range(5):\\
+\hspace{1cm}print("O",end="")\\
+\hspace{0.45cm}print()
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+OOOOO\\
+OOOOO\\
+OOOOO\\
+OOOOO\\
+OOOOO
+\end{center}
+\end{minipage}
+
+\medskip
+Le retour à la lignese fait avec la fonction \textbf{print()} sans paramètres.
+\end{exampleblock}
+
+\begin{alertblock}{Remarque}
+Le nombre de boucle imbriquées n'est pas limité !
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{La boucle WHILE}
+
+\begin{block}{Définition}
+Une boucle \textbf{WHILE} s'exécute tant qu'une condition (test) est vérifiée. Dès que la condition est fausse, on sort de la boucle et les instructions situées après la boucle sont exécutées. \medskip
+
+La condition est un test dont la valeur de retour est de \textbf{type booléen}.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+\begin{itemize}
+\item $i=2$\\
+while $i <= n$:\\
+\hspace{0.5cm}print($i$)\\
+\hspace{0.5cm}$i=i*2$\\
+print("fin")
+\end{itemize}
+Le nombre de tours de boucle varie selon la valeur de $n$.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\frametitle{FOR ou WHILE}
+
+\begin{block}{Définition}
+Le choix de la boucle dépend du contexte. Mais 2 principes sont à respecter :
+\begin{enumerate}
+\item Si on connait le nombre d'itérations (tours de boucles) à l'avance, on s'orientera vers une boucle FOR.
+\item La boucle WHILE peut entrainer une boucle infinie (qui ne s'arrête jamais) car la condition est toujours vraie. Il est indispensble de bien réfléchir à la condition et de faire des tests.
+\end{enumerate}
+\end{block}
+
+\begin{alertblock}{Exemple de boucle infinie}
+\begin{itemize}
+\item $k=1$\\
+while $k>0$:\\
+\hspace{0.5cm}$k=k*2$\\
+\hspace{0.5cm}print("k est toujours positif. La boucle est infinie !")
+\end{itemize}
+Seul un appui sur les touches \textbf{ctrl C} stoppera la boucle.
+\end{alertblock}
+\end{frame}
+
+
+\end{document}
+
